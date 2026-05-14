@@ -1,0 +1,14 @@
+{
+    "name": "microsoft.onedrive",
+    "owner": "WSO2",
+    "product": "MI",
+    "category": "Cloud Services",
+    "documentationUrl": "https://mi.docs.wso2.com/en/4.4.0/",
+    "mavenGroupId": "org.wso2.integration.connector",
+    "mavenArtifactId": "mi-connector-microsoft.onedrive",
+    "description": "Microsoft OneDrive is a cloud-based file storage service provided by Microsoft, allowing users and organizations to store, share, and manage files securely online.",
+    "status": "Active",
+    "rank": 5,
+    "type": "Connector",
+    "releases": []
+}
