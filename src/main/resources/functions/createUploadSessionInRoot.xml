@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<template xmlns="http://ws.apache.org/ns/synapse" name="createUploadSessionInRoot">
+    <parameter name="responseVariable" description="The target variable in which the output of the operation will be stored"/>
+    <parameter name="overwriteBody" description="Replace the Message Body in Message Context with the output payload of the operation"/>
+    <parameter name="driveId" description=""/>
+    <parameter name="item_description" description="Provides a user-visible description of the item. Read-write. Only on OneDrive Personal."/>
+    <parameter name="item_driveItemSource_application" description=""/>
+    <parameter name="item_driveItemSource_externalId" description="The external identifier for the drive item from the source."/>
+    <parameter name="item_fileSize" description="Provides an expected file size to perform a quota check before uploading. Only on OneDrive Personal."/>
+    <parameter name="item_fileSystemInfo_createdDateTime" description="The UTC date and time the file was created on a client."/>
+    <parameter name="item_fileSystemInfo_lastAccessedDateTime" description="The UTC date and time the file was last accessed. Available for the recent file list only."/>
+    <parameter name="item_fileSystemInfo_lastModifiedDateTime" description="The UTC date and time the file was last modified on a client."/>
+    <parameter name="item_mediaSource_contentCategory" description=""/>
+    <parameter name="item_name" description="The name of the item (filename and extension). Read-write."/>
+    <parameter name="headers" description=""/>
+    <sequence>
+        <property name="param0" value="driveId"/>
+        <property name="paramType0" value="string"/>
+        <property name="param1" value="payload"/>
+        <property name="paramType1" value="record"/>
+        <property name="param1_recordName" value="DriveItemIdMicrosoftGraphCreateUploadSessionBody" />
+        <property name="param1_recordOrg" value="ballerinax" />
+        <property name="param1_recordModule" value="microsoft.onedrive" />
+        <property name="payload_param0" value="item.description"/>
+        <property name="payload_paramType0" value="string"/>
+        <property name="payload_param1" value="item.driveItemSource.application"/>
+        <property name="payload_paramType1" value="enum"/>
+        <property name="payload_param2" value="item.driveItemSource.externalId"/>
+        <property name="payload_paramType2" value="string"/>
+        <property name="payload_param3" value="item.fileSize"/>
+        <property name="payload_paramType3" value="decimal"/>
+        <property name="payload_param4" value="item.fileSystemInfo.createdDateTime"/>
+        <property name="payload_paramType4" value="string"/>
+        <property name="payload_param5" value="item.fileSystemInfo.lastAccessedDateTime"/>
+        <property name="payload_paramType5" value="string"/>
+        <property name="payload_param6" value="item.fileSystemInfo.lastModifiedDateTime"/>
+        <property name="payload_paramType6" value="string"/>
+        <property name="payload_param7" value="item.mediaSource.contentCategory"/>
+        <property name="payload_paramType7" value="enum"/>
+        <property name="payload_param8" value="item.name"/>
+        <property name="payload_paramType8" value="string"/>
+        <property name="param2" value="headers"/>
+        <property name="paramType2" value="map"/>
+        <property name="mapValueType2" value="union"/>
+        <property name="paramSize" value="3"/>
+        <property name="paramFunctionName" value="createUploadSessionInRoot"/>
+        <property name="returnType" value="union"/>
+        <property name="functionType" value="REMOTE"/>
+        <class name="io.ballerina.stdlib.mi.BalConnectorFunction">
+            <property name="orgName" value="ballerinax"/>
+            <property name="moduleName" value="microsoft.onedrive"/>
+            <property name="version" value="3"/>
+        </class>
+    </sequence>
+</template>

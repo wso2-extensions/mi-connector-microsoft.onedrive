@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<connector>
+    <component name="microsoft_onedrive" package="io.ballerina.stdlib.mi">
+        <dependency component="config"/>
+        <dependency component="functions"/>
+        <description>## Overview
+
+[Microsoft OneDrive](https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage) is a cloud-based file storage service provided by Microsoft, allowing users and organizations to store, share, and manage files securely online.
+
+The Microsoft OneDrive connector offers APIs to connect and interact with OneDrive API endpoints, specifically based on [Microsoft Graph v1.0](https://learn.microsoft.com/en-us/graph/overview). This connector enables developers to perform operations such as uploading, downloading, and sharing files and folders on OneDrive.
+
+### Key Features
+
+- Secure cloud-based file storage and management
+- Support for Microsoft Graph API v1.0 endpoints
+- Perform file and folder operations programmatically
+- Secure file sharing and organizational data management
+
+## Setup guide
+
+### Step 1. Register the application
+
+1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/).
+   
+2. Go to **App registrations** &gt; **New registration**.
+
+   ![New Registration](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/1-App-registrations.png)
+
+3. Enter a display name for your application.
+   
+   ![Register Application](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/2-Register-application.png)
+
+4. Select who can use the application in the **Supported account types** section.
+   
+5. Leave **Redirect URI** blank for now (you will configure it later).
+   
+6. Click **Register** to complete the initial app registration.
+   
+7. After registration, note the **Application (client) ID** from the Overview pane.
+
+   ![Application Overview](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/3-Application-details.png)
+
+
+### Step 2. Configure platform settings
+
+1. Under **Manage**, select **Authentication**.
+   
+2. Under **Platform configurations**, click **Add a platform**.
+   
+3. Select the **Web** tile.
+   
+4. Set the **Redirect URI** to &#x60;http://localhost&#x60;.
+   
+   ![Configure Web](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/4-Configure-web.png)
+   
+5. Click **Configure** to save the platform configuration.
+
+### Step 3. Add credentials
+
+1. Go to **Certificates &amp; secrets** &gt; **Client secrets** &gt; **New client secret**.
+   
+   ![Add Secret](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/5-Add-secret.png)
+
+2. Add a description for your client secret.
+   
+   ![Add Description](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/6-Give-description.png)
+
+3. Select an expiration period or specify a custom lifetime.
+   
+4. Click **Add**.
+   
+5. **Copy and save the secret value** for use in your client application code. You will not be able to view it again after leaving the page.
+
+      ![Save Secret](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/7-Note-down-secret.png)
+
+### Step 4. Get the Auth Tokens
+
+1. In your browser, enter the following URL (replace &#x60;&lt;client-id&gt;&#x60; with your actual client ID):
+
+   &#x60;&#x60;&#x60;
+   https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id&#x3D;&lt;client-id&gt;&amp;scope&#x3D;offline_access files.read files.read.all files.readwrite files.readwrite.all&amp;response_type&#x3D;code&amp;redirect_uri&#x3D;http://localhost
+   &#x60;&#x60;&#x60;
+
+   **Query parameter details:**
+
+   | Parameter        | Description |
+   |------------------|-------------|
+   | &#x60;client_id&#x60;      | The Application (client) ID from your Azure app registration. |
+   | &#x60;scope&#x60;          | The permissions your app is requesting. For OneDrive, these include:&lt;br&gt;- &#x60;offline_access&#x60;: Allows your app to receive refresh tokens for long-lived access.&lt;br&gt;- &#x60;files.read&#x60;: Read files the user can access.&lt;br&gt;- &#x60;files.read.all&#x60;: Read all files the user can access, including those shared with them.&lt;br&gt;- &#x60;files.readwrite&#x60;: Read and write files the user can access.&lt;br&gt;- &#x60;files.readwrite.all&#x60;: Read and write all files the user can access, including those shared with them. |
+   | &#x60;response_type&#x60;  | Set to &#x60;code&#x60; to request an authorization code for OAuth2. |
+   | &#x60;redirect_uri&#x60;   | The URI to redirect to after authentication. Must match the URI configured in your Azure app registration (e.g., &#x60;http://localhost&#x60;). |
+
+2. Grant access to the application and click **Accept**.
+   
+   ![Give Access](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-microsoft.onedrive/master/docs/setup/8-Give-access.png)
+
+3. After authentication, you will be redirected to a URL like:
+   &#x60;&#x60;&#x60;
+   http://localhost/?code&#x3D;&lt;auth-code&gt;
+   &#x60;&#x60;&#x60;
+   Copy the authorization code from the URL.
+
+4. Exchange the authorization code for access and refresh tokens by sending the following request:
+
+   &#x60;&#x60;&#x60;
+   curl -X POST https://login.microsoftonline.com/common/oauth2/v2.0/token \
+     -H &quot;Content-Type: application/x-www-form-urlencoded&quot; \
+     -d &quot;client_id&#x3D;&lt;client-id&gt;&amp;client_secret&#x3D;&lt;client-secret&gt;&amp;redirect_uri&#x3D;http://localhost&amp;code&#x3D;&lt;auth-code&gt;&amp;grant_type&#x3D;authorization_code&quot;
+   &#x60;&#x60;&#x60;
+
+   The tokens will be returned in the response.
+
+## Quickstart
+
+To use the &#x60;microsoft.onedrive&#x60; connector in your Ballerina application, modify the &#x60;.bal&#x60; file as follows:
+
+### Step 1: Import the module
+
+Import the &#x60;microsoft.onedrive&#x60; module.
+
+&#x60;&#x60;&#x60;ballerina
+import ballerinax/microsoft.onedrive;
+&#x60;&#x60;&#x60;
+
+### Step 2: Instantiate a new connector
+
+Create a &#x60;onedrive:ConnectionConfig&#x60; with the obtained OAuth2.0 tokens and initialize the connector with it.
+
+&#x60;&#x60;&#x60;ballerina
+configurable string clientId &#x3D; ?;
+configurable string clientSecret &#x3D; ?;
+configurable string refreshToken &#x3D; ?;
+
+onedrive:Client onedrive &#x3D; check new (
+    config &#x3D; {
+        auth: {
+            refreshToken,
+            clientId,
+            clientSecret,
+            scopes: [&quot;Files.Read&quot;, &quot;Files.Read.All&quot;, &quot;Files.ReadWrite&quot;, &quot;Files.ReadWrite.All&quot;]
+        }
+    }
+);
+&#x60;&#x60;&#x60;
+
+### Step 3: Invoke the connector operation
+
+Now, utilize the available connector operations.
+
+#### See all the drives available
+
+&#x60;&#x60;&#x60;ballerina
+onedrive:DriveCollectionResponse driveItems &#x3D; check oneDriveClient-&gt;listDrive();
+&#x60;&#x60;&#x60;
+
+## Examples
+
+The &#x60;microsoft.onedrive&#x60; connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/module-ballerinax-microsoft.onedrive/tree/master/examples/), covering the following use cases:
+
+1. [Upload File](https://github.com/ballerina-platform/module-ballerinax-microsoft.onedrive/tree/master/examples/upload-file) - This example demonstrates how to use the Ballerina Microsoft OneDrive connector to upload a file from your local system to your OneDrive account.
+</description>
+    </component>
+    <icon>icon/icon-small.png</icon>
+    <displayName>microsoft_onedrive</displayName>
+</connector>

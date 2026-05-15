@@ -1,0 +1,4041 @@
+{
+  "connectorName": "microsoft_onedrive",
+  "connectionName": "microsoft_onedrive_Client",
+  "title": "Connection Config for microsoft_onedrive_Client connection",
+  "help": "<h1>microsoft_onedrive_Client Connection</h1> <b></b>",
+  "elements": [
+    {
+      "type": "attribute",
+      "value": {
+        "name": "connectionName",
+        "displayName": "Connection Name",
+        "inputType": "string",
+        "defaultValue": "microsoft_onedrive_Client_connection_1",
+        "required": "true",
+        "helpTip": "The name for the microsoft_onedrive_Client connection",
+        "validation": "nameWithoutSpecialCharactors"
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Basic",
+              "collapsed": false,
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "authDataType",
+                    "displayName": "authDataType",
+                    "inputType": "combo",
+                    "comboValues": [
+                      "BearerTokenConfig",
+                      "OAuth2RefreshTokenGrantConfig"
+                    ],
+                    "defaultValue": "BearerTokenConfig",
+                    "required": "true",
+                    "helpTip": "Configurations related to client authentication"
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Auth",
+                    "collapsed": false,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_token",
+                          "displayName": "token",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": true,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "BearerTokenConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_refreshUrl",
+                          "displayName": "refreshUrl",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Refresh URL",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_refreshToken",
+                          "displayName": "refreshToken",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": true,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_clientId",
+                          "displayName": "clientId",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": true,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_clientSecret",
+                          "displayName": "clientSecret",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": true,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_scopesDataType",
+                          "displayName": "scopesDataType",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "string",
+                            "array"
+                          ],
+                          "defaultValue": "string",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_scopesString",
+                          "displayName": "scopesString",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "auth_scopesDataType": "string"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_scopesArray",
+                          "displayName": "scopesArray",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Expecting JSON array",
+                          "validateType": "json",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "auth_scopesDataType": "array"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_defaultTokenExpTime",
+                          "displayName": "defaultTokenExpTime",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_clockSkew",
+                          "displayName": "clockSkew",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_auth_optionalParams",
+                          "displayName": "Configure optionalParams",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure optionalParams settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "table",
+                        "value": {
+                          "name": "auth_optionalParams",
+                          "displayName": "optionalParams",
+                          "title": "optionalParams",
+                          "description": "Configure optionalParams entries",
+                          "tableKey": "key",
+                          "tableValue": "value",
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            },
+                            {
+                              "enable_auth_optionalParams": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "key",
+                                "displayName": "Key",
+                                "inputType": "stringOrExpression",
+                                "required": true,
+                                "helpTip": "Key for the map entry"
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "value",
+                                "displayName": "Value",
+                                "inputType": "stringOrExpression",
+                                "required": true,
+                                "helpTip": "Value for the map entry"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "auth_credentialBearer",
+                          "displayName": "credentialBearer",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "POST_BODY_BEARER",
+                            "AUTH_HEADER_BEARER"
+                          ],
+                          "defaultValue": "AUTH_HEADER_BEARER",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_auth_clientConfig",
+                          "displayName": "Configure clientConfig",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure clientConfig settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Client Config",
+                          "collapsed": false,
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "authDataType": "OAuth2RefreshTokenGrantConfig"
+                            },
+                            {
+                              "enable_auth_clientConfig": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "auth_clientConfig_httpVersion",
+                                "displayName": "httpVersion",
+                                "inputType": "combo",
+                                "comboValues": [
+                                  "HTTP_2",
+                                  "HTTP_1_1"
+                                ],
+                                "defaultValue": "HTTP_1_1",
+                                "required": "false",
+                                "helpTip": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "enable_auth_clientConfig_customHeaders",
+                                "displayName": "Configure customHeaders",
+                                "inputType": "boolean",
+                                "defaultValue": "false",
+                                "required": false,
+                                "helpTip": "Enable to configure customHeaders settings",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "table",
+                              "value": {
+                                "name": "auth_clientConfig_customHeaders",
+                                "displayName": "customHeaders",
+                                "title": "customHeaders",
+                                "description": "Configure customHeaders entries",
+                                "tableKey": "key",
+                                "tableValue": "value",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig_customHeaders": "true"
+                                  }
+                                ],
+                                "elements": [
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "key",
+                                      "displayName": "Key",
+                                      "inputType": "stringOrExpression",
+                                      "required": true,
+                                      "helpTip": "Key for the map entry"
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "value",
+                                      "displayName": "Value",
+                                      "inputType": "stringOrExpression",
+                                      "required": true,
+                                      "helpTip": "Value for the map entry"
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "auth_clientConfig_customPayload",
+                                "displayName": "customPayload",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "auth_clientConfig_authDataType",
+                                "displayName": "authDataType",
+                                "inputType": "combo",
+                                "comboValues": [
+                                  "ClientCredentialsGrantConfig",
+                                  "PasswordGrantConfig",
+                                  "RefreshTokenGrantConfig"
+                                ],
+                                "defaultValue": "ClientCredentialsGrantConfig",
+                                "required": "false",
+                                "helpTip": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attributeGroup",
+                              "value": {
+                                "groupName": "Auth",
+                                "collapsed": false,
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  }
+                                ],
+                                "elements": [
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_tokenUrl",
+                                      "displayName": "tokenUrl",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clientId",
+                                      "displayName": "clientId",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clientSecret",
+                                      "displayName": "clientSecret",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_scopesDataType",
+                                      "displayName": "scopesDataType",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "string",
+                                        "array"
+                                      ],
+                                      "defaultValue": "string",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_scopesString",
+                                      "displayName": "scopesString",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        {
+                                          "auth_clientConfig_auth_scopesDataType": "string"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_scopesArray",
+                                      "displayName": "scopesArray",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "Expecting JSON array",
+                                      "validateType": "json",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        {
+                                          "auth_clientConfig_auth_scopesDataType": "array"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_defaultTokenExpTime",
+                                      "displayName": "defaultTokenExpTime",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "regex",
+                                      "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clockSkew",
+                                      "displayName": "clockSkew",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "regex",
+                                      "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "enable_auth_clientConfig_auth_optionalParams",
+                                      "displayName": "Configure optionalParams",
+                                      "inputType": "boolean",
+                                      "defaultValue": "false",
+                                      "required": false,
+                                      "helpTip": "Enable to configure optionalParams settings",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "table",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_optionalParams",
+                                      "displayName": "optionalParams",
+                                      "title": "optionalParams",
+                                      "description": "Configure optionalParams entries",
+                                      "tableKey": "key",
+                                      "tableValue": "value",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_auth_optionalParams": "true"
+                                        }
+                                      ],
+                                      "elements": [
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "key",
+                                            "displayName": "Key",
+                                            "inputType": "stringOrExpression",
+                                            "required": true,
+                                            "helpTip": "Key for the map entry"
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "value",
+                                            "displayName": "Value",
+                                            "inputType": "stringOrExpression",
+                                            "required": true,
+                                            "helpTip": "Value for the map entry"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_credentialBearer",
+                                      "displayName": "credentialBearer",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "POST_BODY_BEARER",
+                                        "AUTH_HEADER_BEARER"
+                                      ],
+                                      "defaultValue": "AUTH_HEADER_BEARER",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "enable_auth_clientConfig_auth_clientConfig",
+                                      "displayName": "Configure clientConfig",
+                                      "inputType": "boolean",
+                                      "defaultValue": "false",
+                                      "required": false,
+                                      "helpTip": "Enable to configure clientConfig settings",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clientConfig",
+                                      "displayName": "clientConfig",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "ClientCredentialsGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_auth_clientConfig": "true"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_tokenUrl",
+                                      "displayName": "tokenUrl",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_username",
+                                      "displayName": "username",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_password",
+                                      "displayName": "password",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clientId",
+                                      "displayName": "clientId",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clientSecret",
+                                      "displayName": "clientSecret",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_scopesDataType",
+                                      "displayName": "scopesDataType",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "string",
+                                        "array"
+                                      ],
+                                      "defaultValue": "string",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_scopesString",
+                                      "displayName": "scopesString",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        {
+                                          "auth_clientConfig_auth_scopesDataType": "string"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_scopesArray",
+                                      "displayName": "scopesArray",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "Expecting JSON array",
+                                      "validateType": "json",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        {
+                                          "auth_clientConfig_auth_scopesDataType": "array"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_refreshConfigDataType",
+                                      "displayName": "refreshConfigDataType",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "RefreshConfig",
+                                        "string"
+                                      ],
+                                      "defaultValue": "RefreshConfig",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_refreshConfigString",
+                                      "displayName": "refreshConfigString",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        {
+                                          "auth_clientConfig_auth_refreshConfigDataType": "string"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attributeGroup",
+                                    "value": {
+                                      "groupName": "Refresh Config",
+                                      "collapsed": false,
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        },
+                                        {
+                                          "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                        }
+                                      ],
+                                      "elements": [
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_refreshUrl",
+                                            "displayName": "refreshUrl",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_scopesDataType",
+                                            "displayName": "scopesDataType",
+                                            "inputType": "combo",
+                                            "comboValues": [
+                                              "string",
+                                              "array"
+                                            ],
+                                            "defaultValue": "string",
+                                            "required": "false",
+                                            "helpTip": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_scopesString",
+                                            "displayName": "scopesString",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              {
+                                                "auth_clientConfig_auth_refreshConfig_scopesDataType": "string"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_scopesArray",
+                                            "displayName": "scopesArray",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "Expecting JSON array",
+                                            "validateType": "json",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              {
+                                                "auth_clientConfig_auth_refreshConfig_scopesDataType": "array"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "enable_auth_clientConfig_auth_refreshConfig_optionalParams",
+                                            "displayName": "Configure optionalParams",
+                                            "inputType": "boolean",
+                                            "defaultValue": "false",
+                                            "required": false,
+                                            "helpTip": "Enable to configure optionalParams settings",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "table",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_optionalParams",
+                                            "displayName": "optionalParams",
+                                            "title": "optionalParams",
+                                            "description": "Configure optionalParams entries",
+                                            "tableKey": "key",
+                                            "tableValue": "value",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_auth_refreshConfig_optionalParams": "true"
+                                              }
+                                            ],
+                                            "elements": [
+                                              {
+                                                "type": "attribute",
+                                                "value": {
+                                                  "name": "key",
+                                                  "displayName": "Key",
+                                                  "inputType": "stringOrExpression",
+                                                  "required": true,
+                                                  "helpTip": "Key for the map entry"
+                                                }
+                                              },
+                                              {
+                                                "type": "attribute",
+                                                "value": {
+                                                  "name": "value",
+                                                  "displayName": "Value",
+                                                  "inputType": "stringOrExpression",
+                                                  "required": true,
+                                                  "helpTip": "Value for the map entry"
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_credentialBearer",
+                                            "displayName": "credentialBearer",
+                                            "inputType": "combo",
+                                            "comboValues": [
+                                              "POST_BODY_BEARER",
+                                              "AUTH_HEADER_BEARER"
+                                            ],
+                                            "defaultValue": "AUTH_HEADER_BEARER",
+                                            "required": "false",
+                                            "helpTip": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "enable_auth_clientConfig_auth_refreshConfig_clientConfig",
+                                            "displayName": "Configure clientConfig",
+                                            "inputType": "boolean",
+                                            "defaultValue": "false",
+                                            "required": false,
+                                            "helpTip": "Enable to configure clientConfig settings",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_auth_refreshConfig_clientConfig",
+                                            "displayName": "clientConfig",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                              },
+                                              {
+                                                "auth_clientConfig_auth_refreshConfigDataType": "RefreshConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_auth_refreshConfig_clientConfig": "true"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_defaultTokenExpTime",
+                                      "displayName": "defaultTokenExpTime",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "regex",
+                                      "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clockSkew",
+                                      "displayName": "clockSkew",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "regex",
+                                      "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "enable_auth_clientConfig_auth_optionalParams",
+                                      "displayName": "Configure optionalParams",
+                                      "inputType": "boolean",
+                                      "defaultValue": "false",
+                                      "required": false,
+                                      "helpTip": "Enable to configure optionalParams settings",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "table",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_optionalParams",
+                                      "displayName": "optionalParams",
+                                      "title": "optionalParams",
+                                      "description": "Configure optionalParams entries",
+                                      "tableKey": "key",
+                                      "tableValue": "value",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_auth_optionalParams": "true"
+                                        }
+                                      ],
+                                      "elements": [
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "key",
+                                            "displayName": "Key",
+                                            "inputType": "stringOrExpression",
+                                            "required": true,
+                                            "helpTip": "Key for the map entry"
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "value",
+                                            "displayName": "Value",
+                                            "inputType": "stringOrExpression",
+                                            "required": true,
+                                            "helpTip": "Value for the map entry"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_credentialBearer",
+                                      "displayName": "credentialBearer",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "POST_BODY_BEARER",
+                                        "AUTH_HEADER_BEARER"
+                                      ],
+                                      "defaultValue": "AUTH_HEADER_BEARER",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "enable_auth_clientConfig_auth_clientConfig",
+                                      "displayName": "Configure clientConfig",
+                                      "inputType": "boolean",
+                                      "defaultValue": "false",
+                                      "required": false,
+                                      "helpTip": "Enable to configure clientConfig settings",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_auth_clientConfig",
+                                      "displayName": "clientConfig",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_authDataType": "PasswordGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_auth_clientConfig": "true"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "enable_auth_clientConfig_secureSocket",
+                                "displayName": "Configure secureSocket",
+                                "inputType": "boolean",
+                                "defaultValue": "false",
+                                "required": false,
+                                "helpTip": "Enable to configure secureSocket settings",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attributeGroup",
+                              "value": {
+                                "groupName": "Secure Socket",
+                                "collapsed": false,
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig": "true"
+                                  },
+                                  {
+                                    "enable_auth_clientConfig_secureSocket": "true"
+                                  }
+                                ],
+                                "elements": [
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_secureSocket_disable",
+                                      "displayName": "disable",
+                                      "inputType": "boolean",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_secureSocket": "true"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_secureSocket_certDataType",
+                                      "displayName": "certDataType",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "TrustStore",
+                                        "string"
+                                      ],
+                                      "defaultValue": "TrustStore",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_secureSocket": "true"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_secureSocket_certString",
+                                      "displayName": "certString",
+                                      "inputType": "stringOrExpression",
+                                      "defaultValue": "",
+                                      "required": false,
+                                      "helpTip": "",
+                                      "validateType": "",
+                                      "matchPattern": "",
+                                      "enableCondition": [
+                                        {
+                                          "auth_clientConfig_secureSocket_certDataType": "string"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attributeGroup",
+                                    "value": {
+                                      "groupName": "Cert",
+                                      "collapsed": false,
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_secureSocket": "true"
+                                        },
+                                        {
+                                          "auth_clientConfig_secureSocket_certDataType": "TrustStore"
+                                        }
+                                      ],
+                                      "elements": [
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_cert_path",
+                                            "displayName": "path",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_certDataType": "TrustStore"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_cert_password",
+                                            "displayName": "password",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_certDataType": "TrustStore"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "auth_clientConfig_secureSocket_keyDataType",
+                                      "displayName": "keyDataType",
+                                      "inputType": "combo",
+                                      "comboValues": [
+                                        "KeyStore",
+                                        "CertKey"
+                                      ],
+                                      "defaultValue": "KeyStore",
+                                      "required": "false",
+                                      "helpTip": "",
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_secureSocket": "true"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "type": "attributeGroup",
+                                    "value": {
+                                      "groupName": "Key",
+                                      "collapsed": false,
+                                      "enableCondition": [
+                                        "AND",
+                                        {
+                                          "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig": "true"
+                                        },
+                                        {
+                                          "enable_auth_clientConfig_secureSocket": "true"
+                                        }
+                                      ],
+                                      "elements": [
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_key_path",
+                                            "displayName": "path",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_keyDataType": "KeyStore"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_key_password",
+                                            "displayName": "password",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_keyDataType": "KeyStore"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_key_certFile",
+                                            "displayName": "certFile",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_keyDataType": "CertKey"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_key_keyFile",
+                                            "displayName": "keyFile",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_keyDataType": "CertKey"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        {
+                                          "type": "attribute",
+                                          "value": {
+                                            "name": "auth_clientConfig_secureSocket_key_keyPassword",
+                                            "displayName": "keyPassword",
+                                            "inputType": "stringOrExpression",
+                                            "defaultValue": "",
+                                            "required": false,
+                                            "helpTip": "",
+                                            "validateType": "",
+                                            "matchPattern": "",
+                                            "enableCondition": [
+                                              "AND",
+                                              {
+                                                "authDataType": "OAuth2RefreshTokenGrantConfig"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig": "true"
+                                              },
+                                              {
+                                                "enable_auth_clientConfig_secureSocket": "true"
+                                              },
+                                              {
+                                                "auth_clientConfig_secureSocket_keyDataType": "CertKey"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "httpVersion",
+                    "displayName": "httpVersion",
+                    "inputType": "combo",
+                    "comboValues": [
+                      "2.0",
+                      "1.1",
+                      "1.0"
+                    ],
+                    "defaultValue": "2.0",
+                    "required": "false",
+                    "helpTip": "The HTTP version understood by the client"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_http1Settings",
+                    "displayName": "Configure http1Settings",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure http1Settings settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Http1Settings",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_http1Settings": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "http1Settings_keepAlive",
+                          "displayName": "keepAlive",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "AUTO",
+                            "ALWAYS",
+                            "NEVER"
+                          ],
+                          "defaultValue": "KEEPALIVE_AUTO",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "enable_http1Settings": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "http1Settings_chunking",
+                          "displayName": "chunking",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "AUTO",
+                            "ALWAYS",
+                            "NEVER"
+                          ],
+                          "defaultValue": "CHUNKING_AUTO",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "enable_http1Settings": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_http1Settings_proxy",
+                          "displayName": "Configure proxy",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure proxy settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_http1Settings": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "http1Settings_proxy",
+                          "displayName": "proxy",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_http1Settings": "true"
+                            },
+                            {
+                              "enable_http1Settings_proxy": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_http2Settings",
+                    "displayName": "Configure http2Settings",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure http2Settings settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Http2Settings",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_http2Settings": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "http2Settings_http2PriorKnowledge",
+                          "displayName": "http2PriorKnowledge",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_http2Settings": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "http2Settings_http2InitialWindowSize",
+                          "displayName": "http2InitialWindowSize",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_http2Settings": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "timeout",
+                    "displayName": "timeout",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "The maximum time to wait (in seconds) for a response before closing the connection",
+                    "validateType": "regex",
+                    "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "forwarded",
+                    "displayName": "forwarded",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "The choice of setting `forwarded`/`x-forwarded` header",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_followRedirects",
+                    "displayName": "Configure followRedirects",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure followRedirects settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Follow Redirects",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_followRedirects": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "followRedirects_enabled",
+                          "displayName": "enabled",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_followRedirects": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "followRedirects_maxCount",
+                          "displayName": "maxCount",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_followRedirects": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "followRedirects_allowAuthHeaders",
+                          "displayName": "allowAuthHeaders",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_followRedirects": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_poolConfig",
+                    "displayName": "Configure poolConfig",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure poolConfig settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Pool Config",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_poolConfig": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_maxActiveConnections",
+                          "displayName": "maxActiveConnections",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_maxIdleConnections",
+                          "displayName": "maxIdleConnections",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_waitTime",
+                          "displayName": "waitTime",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_maxActiveStreamsPerConnection",
+                          "displayName": "maxActiveStreamsPerConnection",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_minEvictableIdleTime",
+                          "displayName": "minEvictableIdleTime",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_timeBetweenEvictionRuns",
+                          "displayName": "timeBetweenEvictionRuns",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_minIdleTimeInStaleState",
+                          "displayName": "minIdleTimeInStaleState",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "poolConfig_timeBetweenStaleEviction",
+                          "displayName": "timeBetweenStaleEviction",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_poolConfig": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_cache",
+                    "displayName": "Configure cache",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure cache settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Cache",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_cache": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cache_enabled",
+                          "displayName": "enabled",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_cache": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cache_isShared",
+                          "displayName": "isShared",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_cache": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cache_capacity",
+                          "displayName": "capacity",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_cache": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cache_evictionFactor",
+                          "displayName": "evictionFactor",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_cache": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cache_policy",
+                          "displayName": "policy",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "CACHE_CONTROL_AND_VALIDATORS",
+                            "RFC_7234"
+                          ],
+                          "defaultValue": "CACHE_CONTROL_AND_VALIDATORS",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "enable_cache": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "compression",
+                    "displayName": "compression",
+                    "inputType": "combo",
+                    "comboValues": [
+                      "AUTO",
+                      "ALWAYS",
+                      "NEVER"
+                    ],
+                    "defaultValue": "AUTO",
+                    "required": "false",
+                    "helpTip": "Specifies the way of handling compression (`accept-encoding`) header"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_circuitBreaker",
+                    "displayName": "Configure circuitBreaker",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure circuitBreaker settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Circuit Breaker",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_circuitBreaker": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_circuitBreaker_rollingWindow",
+                          "displayName": "Configure rollingWindow",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure rollingWindow settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_circuitBreaker": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Rolling Window",
+                          "collapsed": false,
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_circuitBreaker": "true"
+                            },
+                            {
+                              "enable_circuitBreaker_rollingWindow": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "circuitBreaker_rollingWindow_requestVolumeThreshold",
+                                "displayName": "requestVolumeThreshold",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "Minimum number of requests in a `RollingWindow` that will trip the circuit.",
+                                "validateType": "regex",
+                                "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_circuitBreaker": "true"
+                                  },
+                                  {
+                                    "enable_circuitBreaker_rollingWindow": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "circuitBreaker_rollingWindow_timeWindow",
+                                "displayName": "timeWindow",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "Time period in seconds for which the failure threshold is calculated",
+                                "validateType": "regex",
+                                "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_circuitBreaker": "true"
+                                  },
+                                  {
+                                    "enable_circuitBreaker_rollingWindow": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "circuitBreaker_rollingWindow_bucketSize",
+                                "displayName": "bucketSize",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The granularity at which the time window slides. This is measured in seconds.",
+                                "validateType": "regex",
+                                "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_circuitBreaker": "true"
+                                  },
+                                  {
+                                    "enable_circuitBreaker_rollingWindow": "true"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "circuitBreaker_failureThreshold",
+                          "displayName": "failureThreshold",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "The threshold for request failures. When this threshold exceeds, the circuit trips. The threshold should be a\nvalue between 0 and 1",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_circuitBreaker": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "circuitBreaker_resetTime",
+                          "displayName": "resetTime",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "The time period (in seconds) to wait before attempting to make another request to the upstream service",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_circuitBreaker": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_circuitBreaker_statusCodes",
+                          "displayName": "Configure statusCodes",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure statusCodes settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_circuitBreaker": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "table",
+                        "value": {
+                          "name": "circuitBreaker_statusCodes",
+                          "displayName": "statusCodes",
+                          "title": "statusCodes",
+                          "description": "Array of HTTP response status codes which are considered as failures",
+                          "tableKey": "value",
+                          "tableValue": "value",
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_circuitBreaker": "true"
+                            },
+                            {
+                              "enable_circuitBreaker_statusCodes": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "value",
+                                "displayName": "Value",
+                                "inputType": "stringOrExpression",
+                                "required": true,
+                                "helpTip": "Integer value",
+                                "validateType": "regex",
+                                "matchPattern": "^(-?\\d+|\\$\\{.+\\})$"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_retryConfig",
+                    "displayName": "Configure retryConfig",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure retryConfig settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Retry Config",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_retryConfig": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "retryConfig_count",
+                          "displayName": "count",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_retryConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "retryConfig_interval",
+                          "displayName": "interval",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_retryConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "retryConfig_backOffFactor",
+                          "displayName": "backOffFactor",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_retryConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "retryConfig_maxWaitInterval",
+                          "displayName": "maxWaitInterval",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_retryConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_retryConfig_statusCodes",
+                          "displayName": "Configure statusCodes",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure statusCodes settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_retryConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "table",
+                        "value": {
+                          "name": "retryConfig_statusCodes",
+                          "displayName": "statusCodes",
+                          "title": "statusCodes",
+                          "description": "Configure statusCodes entries",
+                          "tableKey": "value",
+                          "tableValue": "value",
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_retryConfig": "true"
+                            },
+                            {
+                              "enable_retryConfig_statusCodes": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "value",
+                                "displayName": "Value",
+                                "inputType": "stringOrExpression",
+                                "required": true,
+                                "helpTip": "Integer value",
+                                "validateType": "regex",
+                                "matchPattern": "^(-?\\d+|\\$\\{.+\\})$"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_cookieConfig",
+                    "displayName": "Configure cookieConfig",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure cookieConfig settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Cookie Config",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_cookieConfig": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cookieConfig_enabled",
+                          "displayName": "enabled",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_cookieConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cookieConfig_maxCookiesPerDomain",
+                          "displayName": "maxCookiesPerDomain",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_cookieConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cookieConfig_maxTotalCookieCount",
+                          "displayName": "maxTotalCookieCount",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_cookieConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "cookieConfig_blockThirdPartyCookies",
+                          "displayName": "blockThirdPartyCookies",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_cookieConfig": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_responseLimits",
+                    "displayName": "Configure responseLimits",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure responseLimits settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Response Limits",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_responseLimits": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "responseLimits_maxStatusLineLength",
+                          "displayName": "maxStatusLineLength",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_responseLimits": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "responseLimits_maxHeaderSize",
+                          "displayName": "maxHeaderSize",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_responseLimits": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "responseLimits_maxEntityBodySize",
+                          "displayName": "maxEntityBodySize",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_responseLimits": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_secureSocket",
+                    "displayName": "Configure secureSocket",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure secureSocket settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Secure Socket",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_secureSocket": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_enable",
+                          "displayName": "enable",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_certDataType",
+                          "displayName": "certDataType",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "TrustStore",
+                            "string"
+                          ],
+                          "defaultValue": "TrustStore",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_certString",
+                          "displayName": "certString",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "secureSocket_certDataType": "string"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Cert",
+                          "collapsed": false,
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_secureSocket": "true"
+                            },
+                            {
+                              "secureSocket_certDataType": "TrustStore"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_cert_path",
+                                "displayName": "path",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_certDataType": "TrustStore"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_cert_password",
+                                "displayName": "password",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_certDataType": "TrustStore"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_keyDataType",
+                          "displayName": "keyDataType",
+                          "inputType": "combo",
+                          "comboValues": [
+                            "KeyStore",
+                            "CertKey"
+                          ],
+                          "defaultValue": "KeyStore",
+                          "required": "false",
+                          "helpTip": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Key",
+                          "collapsed": false,
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_key_path",
+                                "displayName": "path",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_keyDataType": "KeyStore"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_key_password",
+                                "displayName": "password",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_keyDataType": "KeyStore"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_key_certFile",
+                                "displayName": "certFile",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_keyDataType": "CertKey"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_key_keyFile",
+                                "displayName": "keyFile",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_keyDataType": "CertKey"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_key_keyPassword",
+                                "displayName": "keyPassword",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "secureSocket_keyDataType": "CertKey"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_secureSocket_protocol",
+                          "displayName": "Configure protocol",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure protocol settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Protocol",
+                          "collapsed": false,
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_secureSocket": "true"
+                            },
+                            {
+                              "enable_secureSocket_protocol": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_protocol_name",
+                                "displayName": "name",
+                                "inputType": "combo",
+                                "comboValues": [
+                                  "DTLS",
+                                  "TLS",
+                                  "SSL"
+                                ],
+                                "defaultValue": "DTLS",
+                                "required": "false",
+                                "helpTip": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_protocol": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "enable_secureSocket_protocol_versions",
+                                "displayName": "Configure versions",
+                                "inputType": "boolean",
+                                "defaultValue": "false",
+                                "required": false,
+                                "helpTip": "Enable to configure versions settings",
+                                "validateType": "",
+                                "matchPattern": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_protocol": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "table",
+                              "value": {
+                                "name": "secureSocket_protocol_versions",
+                                "displayName": "versions",
+                                "title": "versions",
+                                "description": "Configure versions entries",
+                                "tableKey": "value",
+                                "tableValue": "value",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_protocol": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_protocol_versions": "true"
+                                  }
+                                ],
+                                "elements": [
+                                  {
+                                    "type": "attribute",
+                                    "value": {
+                                      "name": "value",
+                                      "displayName": "Value",
+                                      "inputType": "stringOrExpression",
+                                      "required": true,
+                                      "helpTip": "Array element"
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_secureSocket_certValidation",
+                          "displayName": "Configure certValidation",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure certValidation settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Cert Validation",
+                          "collapsed": false,
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_secureSocket": "true"
+                            },
+                            {
+                              "enable_secureSocket_certValidation": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_certValidation_type",
+                                "displayName": "type",
+                                "inputType": "combo",
+                                "comboValues": [
+                                  "OCSP_STAPLING",
+                                  "OCSP_CRL"
+                                ],
+                                "defaultValue": "OCSP_STAPLING",
+                                "required": "false",
+                                "helpTip": "",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_certValidation": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_certValidation_cacheSize",
+                                "displayName": "cacheSize",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "regex",
+                                "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_certValidation": "true"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "secureSocket_certValidation_cacheValidityPeriod",
+                                "displayName": "cacheValidityPeriod",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "",
+                                "validateType": "regex",
+                                "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                                "enableCondition": [
+                                  "AND",
+                                  {
+                                    "enable_secureSocket": "true"
+                                  },
+                                  {
+                                    "enable_secureSocket_certValidation": "true"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "enable_secureSocket_ciphers",
+                          "displayName": "Configure ciphers",
+                          "inputType": "boolean",
+                          "defaultValue": "false",
+                          "required": false,
+                          "helpTip": "Enable to configure ciphers settings",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "table",
+                        "value": {
+                          "name": "secureSocket_ciphers",
+                          "displayName": "ciphers",
+                          "title": "ciphers",
+                          "description": "Configure ciphers entries",
+                          "tableKey": "value",
+                          "tableValue": "value",
+                          "enableCondition": [
+                            "AND",
+                            {
+                              "enable_secureSocket": "true"
+                            },
+                            {
+                              "enable_secureSocket_ciphers": "true"
+                            }
+                          ],
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "value",
+                                "displayName": "Value",
+                                "inputType": "stringOrExpression",
+                                "required": true,
+                                "helpTip": "Array element"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_verifyHostName",
+                          "displayName": "verifyHostName",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_shareSession",
+                          "displayName": "shareSession",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_handshakeTimeout",
+                          "displayName": "handshakeTimeout",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_sessionTimeout",
+                          "displayName": "sessionTimeout",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "secureSocket_serverName",
+                          "displayName": "serverName",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_secureSocket": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_proxy",
+                    "displayName": "Configure proxy",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure proxy settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Proxy",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_proxy": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "proxy_host",
+                          "displayName": "host",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_proxy": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "proxy_port",
+                          "displayName": "port",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_proxy": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "proxy_userName",
+                          "displayName": "userName",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_proxy": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "proxy_password",
+                          "displayName": "password",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_proxy": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "enable_socketConfig",
+                    "displayName": "Configure socketConfig",
+                    "inputType": "boolean",
+                    "defaultValue": "false",
+                    "required": false,
+                    "helpTip": "Enable to configure socketConfig settings",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Socket Config",
+                    "collapsed": false,
+                    "enableCondition": [
+                      {
+                        "enable_socketConfig": "true"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "socketConfig_connectTimeOut",
+                          "displayName": "connectTimeOut",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_socketConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "socketConfig_receiveBufferSize",
+                          "displayName": "receiveBufferSize",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_socketConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "socketConfig_sendBufferSize",
+                          "displayName": "sendBufferSize",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$",
+                          "enableCondition": [
+                            {
+                              "enable_socketConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "socketConfig_tcpNoDelay",
+                          "displayName": "tcpNoDelay",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_socketConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "socketConfig_socketReuse",
+                          "displayName": "socketReuse",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_socketConfig": "true"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "socketConfig_keepAlive",
+                          "displayName": "keepAlive",
+                          "inputType": "boolean",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "",
+                          "validateType": "",
+                          "matchPattern": "",
+                          "enableCondition": [
+                            {
+                              "enable_socketConfig": "true"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "validation",
+                    "displayName": "validation",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Enables the inbound payload validation functionality which provided by the constraint package. Enabled by default",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "laxDataBinding",
+                    "displayName": "laxDataBinding",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Enables relaxed data binding on the client side. When enabled, `nil` values are treated as optional, \nand absent fields are handled as `nilable` types. Enabled by default.",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Advanced",
+              "collapsed": true,
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "serviceUrl",
+                    "displayName": "serviceUrl",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "https://graph.microsoft.com/v1.0/",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

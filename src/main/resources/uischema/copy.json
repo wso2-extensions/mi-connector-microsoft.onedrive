@@ -1,0 +1,356 @@
+{
+  "connectorName": "microsoft_onedrive",
+  "operationName": "copy",
+  "title": "copy",
+  "help": "Invoke action copy\n",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "microsoft_onedrive_Client"
+              ],
+              "defaultType": "connection.microsoft_onedrive_Client",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Input Variables",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "driveId",
+                    "displayName": "driveId",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": true,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "driveItemId",
+                    "displayName": "driveItemId",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": true,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "name",
+                    "displayName": "name",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Parent Reference",
+                    "collapsed": false,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_driveId",
+                          "displayName": "driveId",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a drive. Read-only.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_driveType",
+                          "displayName": "driveType",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Identifies the type of drive. Only returned if the item is located in a drive. See drive resource for values.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_id",
+                          "displayName": "id",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Unique identifier of the driveItem in the drive or a listItem in a list. Read-only.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_name",
+                          "displayName": "name",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "The name of the item being referenced. Read-only.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_path",
+                          "displayName": "path",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Percent-encoded path that can be used to navigate to the item. Read-only.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_shareId",
+                          "displayName": "shareId",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "A unique identifier for a shared resource that can be accessed via the Shares API.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Sharepoint Ids",
+                          "collapsed": false,
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_listId",
+                                "displayName": "listId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The unique identifier (guid) for the item's list in SharePoint.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_listItemId",
+                                "displayName": "listItemId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "An integer identifier for the item within the containing list.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_listItemUniqueId",
+                                "displayName": "listItemUniqueId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The unique identifier (guid) for the item within OneDrive for Business or a SharePoint site.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_siteId",
+                                "displayName": "siteId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The unique identifier (guid) for the item's site collection (SPSite).",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_siteUrl",
+                                "displayName": "siteUrl",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The SharePoint URL for the site that contains the item.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_tenantId",
+                                "displayName": "tenantId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The unique identifier (guid) for the tenancy.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "parentReference_sharepointIds_webId",
+                                "displayName": "webId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The unique identifier (guid) for the item's site (SPWeb).",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "parentReference_siteId",
+                          "displayName": "siteId",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that site resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "childrenOnly",
+                    "displayName": "childrenOnly",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "includeAllVersionHistory",
+                    "displayName": "includeAllVersionHistory",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Advanced",
+                    "collapsed": true,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "headers",
+                          "displayName": "headers",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "{}",
+                          "required": false,
+                          "helpTip": "Expecting JSON object with key-value pairs",
+                          "validateType": "json",
+                          "matchPattern": ""
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Output",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "responseVariable",
+                    "displayName": "Output Variable Name",
+                    "inputType": "string",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "The target variable in which the output of the operation will be stored"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "overwriteBody",
+                    "displayName": "Overwrite Message Body",
+                    "inputType": "checkbox",
+                    "defaultValue": "false",
+                    "helpTip": "Replace the Message Body in Message Context with the output payload of the operation (This will remove the payload from the above variable. But other elements such as headers and attributes will remain).",
+                    "required": "false"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

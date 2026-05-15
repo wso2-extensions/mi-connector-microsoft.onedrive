@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<template xmlns="http://ws.apache.org/ns/synapse" name="search">
+    <parameter name="responseVariable" description="The target variable in which the output of the operation will be stored"/>
+    <parameter name="overwriteBody" description="Replace the Message Body in Message Context with the output payload of the operation"/>
+    <parameter name="driveId" description=""/>
+    <parameter name="driveItemId" description=""/>
+    <parameter name="q" description=""/>
+    <parameter name="headers" description=""/>
+    <parameter name="skip" description="Skip the first n items"/>
+    <parameter name="top" description="Show only the first n items"/>
+    <parameter name="filter" description="Filter items by property values"/>
+    <parameter name="search" description="Search items by search phrases"/>
+    <parameter name="orderby" description="Order items by property values"/>
+    <parameter name="expand" description="Expand related entities"/>
+    <parameter name="count" description="Include count of items"/>
+    <parameter name="select" description="Select properties to be returned"/>
+    <sequence>
+        <property name="param0" value="driveId"/>
+        <property name="paramType0" value="string"/>
+        <property name="param1" value="driveItemId"/>
+        <property name="paramType1" value="string"/>
+        <property name="param2" value="q"/>
+        <property name="paramType2" value="string"/>
+        <property name="param3" value="headers"/>
+        <property name="paramType3" value="map"/>
+        <property name="mapValueType3" value="union"/>
+        <property name="param4" value="queries"/>
+        <property name="paramType4" value="record"/>
+        <property name="param4_recordName" value="SearchQueries" />
+        <property name="queries_param0" value="skip"/>
+        <property name="queries_paramType0" value="int"/>
+        <property name="queries_param1" value="top"/>
+        <property name="queries_paramType1" value="int"/>
+        <property name="queries_param2" value="filter"/>
+        <property name="queries_paramType2" value="string"/>
+        <property name="queries_param3" value="search"/>
+        <property name="queries_paramType3" value="string"/>
+        <property name="queries_param4" value="orderby"/>
+        <property name="queries_paramType4" value="array"/>
+        <property name="queries_arrayElementType4" value="string"/>
+        <property name="queries_param5" value="expand"/>
+        <property name="queries_paramType5" value="array"/>
+        <property name="queries_arrayElementType5" value="string"/>
+        <property name="queries_param6" value="count"/>
+        <property name="queries_paramType6" value="boolean"/>
+        <property name="queries_param7" value="select"/>
+        <property name="queries_paramType7" value="array"/>
+        <property name="queries_arrayElementType7" value="string"/>
+        <property name="paramSize" value="5"/>
+        <property name="paramFunctionName" value="search"/>
+        <property name="returnType" value="union"/>
+        <property name="functionType" value="REMOTE"/>
+        <class name="io.ballerina.stdlib.mi.BalConnectorFunction">
+            <property name="orgName" value="ballerinax"/>
+            <property name="moduleName" value="microsoft.onedrive"/>
+            <property name="version" value="3"/>
+        </class>
+    </sequence>
+</template>
