@@ -1,0 +1,251 @@
+{
+  "connectorName": "microsoft_onedrive",
+  "operationName": "listItemsByPath",
+  "title": "list items by path",
+  "help": "Get children from drives\n",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "microsoft_onedrive_Client"
+              ],
+              "defaultType": "connection.microsoft_onedrive_Client",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Input Variables",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "driveId",
+                    "displayName": "driveId",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": true,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "pathToFolder",
+                    "displayName": "pathToFolder",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": true,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "skip",
+                    "displayName": "skip",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Skip the first n items",
+                    "validateType": "regex",
+                    "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "top",
+                    "displayName": "top",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Show only the first n items",
+                    "validateType": "regex",
+                    "matchPattern": "^$|^(-?\\d+|\\$\\{.+\\})$"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "filter",
+                    "displayName": "filter",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Filter items by property values",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "search",
+                    "displayName": "search",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Search items by search phrases",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "table",
+                  "value": {
+                    "name": "orderby",
+                    "displayName": "orderby",
+                    "title": "orderby",
+                    "description": "Order items by property values",
+                    "tableKey": "value",
+                    "tableValue": "value",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "value",
+                          "displayName": "Value",
+                          "inputType": "stringOrExpression",
+                          "required": true,
+                          "helpTip": "Array element"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "table",
+                  "value": {
+                    "name": "expand",
+                    "displayName": "expand",
+                    "title": "expand",
+                    "description": "Expand related entities",
+                    "tableKey": "value",
+                    "tableValue": "value",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "value",
+                          "displayName": "Value",
+                          "inputType": "stringOrExpression",
+                          "required": true,
+                          "helpTip": "Array element"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "count",
+                    "displayName": "count",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Include count of items",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "table",
+                  "value": {
+                    "name": "select",
+                    "displayName": "select",
+                    "title": "select",
+                    "description": "Select properties to be returned",
+                    "tableKey": "value",
+                    "tableValue": "value",
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "value",
+                          "displayName": "Value",
+                          "inputType": "stringOrExpression",
+                          "required": true,
+                          "helpTip": "Array element"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Advanced",
+                    "collapsed": true,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "headers",
+                          "displayName": "headers",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "{}",
+                          "required": false,
+                          "helpTip": "Expecting JSON object with key-value pairs",
+                          "validateType": "json",
+                          "matchPattern": ""
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Output",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "responseVariable",
+                    "displayName": "Output Variable Name",
+                    "inputType": "string",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "The target variable in which the output of the operation will be stored"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "overwriteBody",
+                    "displayName": "Overwrite Message Body",
+                    "inputType": "checkbox",
+                    "defaultValue": "false",
+                    "helpTip": "Replace the Message Body in Message Context with the output payload of the operation (This will remove the payload from the above variable. But other elements such as headers and attributes will remain).",
+                    "required": "false"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "connectorName": "microsoft_onedrive",
+  "operationName": "createLinkInRoot",
+  "title": "create link in root",
+  "help": "Invoke action createLink\n",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "microsoft_onedrive_Client"
+              ],
+              "defaultType": "connection.microsoft_onedrive_Client",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Input Variables",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "driveId",
+                    "displayName": "driveId",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": true,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "type",
+                    "displayName": "type",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "scope",
+                    "displayName": "scope",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "expirationDateTime",
+                    "displayName": "expirationDateTime",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "password",
+                    "displayName": "password",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "message",
+                    "displayName": "message",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "recipientsInputMode",
+                    "displayName": "recipients Input Mode",
+                    "inputType": "combo",
+                    "comboValues": [
+                      "Table",
+                      "JSON"
+                    ],
+                    "defaultValue": "Table",
+                    "required": "true",
+                    "helpTip": "Choose input mode: Table for interactive entry, JSON for array expression"
+                  }
+                },
+                {
+                  "type": "table",
+                  "value": {
+                    "name": "recipients",
+                    "displayName": "recipients",
+                    "title": "recipients",
+                    "description": "Configure recipients entries",
+                    "tableKey": "alias",
+                    "tableValue": "objectId",
+                    "enableCondition": [
+                      {
+                        "recipientsInputMode": "Table"
+                      }
+                    ],
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "alias",
+                          "displayName": "Alias",
+                          "inputType": "stringOrExpression",
+                          "required": false,
+                          "helpTip": "The alias of the domain object, for cases where an email address is unavailable (for example, security groups)."
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "email",
+                          "displayName": "Email",
+                          "inputType": "stringOrExpression",
+                          "required": false,
+                          "helpTip": "The email address for the recipient, if the recipient has an associated email address."
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "objectId",
+                          "displayName": "ObjectId",
+                          "inputType": "stringOrExpression",
+                          "required": false,
+                          "helpTip": "The unique identifier for the recipient in the directory."
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "recipientsJson",
+                    "displayName": "recipients (JSON Array)",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "Enter JSON array of recipients objects. Example: [{\"field1\": \"value1\", ...}, ...]",
+                    "validateType": "json",
+                    "matchPattern": "",
+                    "enableCondition": [
+                      {
+                        "recipientsInputMode": "JSON"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "retainInheritedPermissions",
+                    "displayName": "retainInheritedPermissions",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "sendNotification",
+                    "displayName": "sendNotification",
+                    "inputType": "boolean",
+                    "defaultValue": "",
+                    "required": false,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Advanced",
+                    "collapsed": true,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "headers",
+                          "displayName": "headers",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "{}",
+                          "required": false,
+                          "helpTip": "Expecting JSON object with key-value pairs",
+                          "validateType": "json",
+                          "matchPattern": ""
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Output",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "responseVariable",
+                    "displayName": "Output Variable Name",
+                    "inputType": "string",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "The target variable in which the output of the operation will be stored"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "overwriteBody",
+                    "displayName": "Overwrite Message Body",
+                    "inputType": "checkbox",
+                    "defaultValue": "false",
+                    "helpTip": "Replace the Message Body in Message Context with the output payload of the operation (This will remove the payload from the above variable. But other elements such as headers and attributes will remain).",
+                    "required": "false"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

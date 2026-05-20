@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<template xmlns="http://ws.apache.org/ns/synapse" name="inviteInRoot">
+    <parameter name="responseVariable" description="The target variable in which the output of the operation will be stored"/>
+    <parameter name="overwriteBody" description="Replace the Message Body in Message Context with the output payload of the operation"/>
+    <parameter name="driveId" description=""/>
+    <parameter name="requireSignIn" description=""/>
+    <parameter name="roles" description=""/>
+    <parameter name="sendInvitation" description=""/>
+    <parameter name="message" description=""/>
+    <parameter name="recipientsInputMode" description="Input mode for recipients: Table or JSON"/>
+    <parameter name="recipientsJson" description="JSON array input for recipients"/>
+    <parameter name="recipients" description=""/>
+    <parameter name="retainInheritedPermissions" description=""/>
+    <parameter name="expirationDateTime" description=""/>
+    <parameter name="password" description=""/>
+    <parameter name="headers" description=""/>
+    <sequence>
+        <property name="param0" value="driveId"/>
+        <property name="paramType0" value="string"/>
+        <property name="param1" value="payload"/>
+        <property name="paramType1" value="record"/>
+        <property name="param1_recordName" value="DriveItemIdMicrosoftGraphInviteBody" />
+        <property name="param1_recordOrg" value="ballerinax" />
+        <property name="param1_recordModule" value="microsoft.onedrive" />
+        <property name="payload_param0" value="requireSignIn"/>
+        <property name="payload_paramType0" value="boolean"/>
+        <property name="payload_param1" value="roles"/>
+        <property name="payload_paramType1" value="array"/>
+        <property name="payload_arrayElementType1" value="string"/>
+        <property name="payload_param2" value="sendInvitation"/>
+        <property name="payload_paramType2" value="boolean"/>
+        <property name="payload_param3" value="message"/>
+        <property name="payload_paramType3" value="string"/>
+        <property name="payload_param4" value="recipients"/>
+        <property name="payload_paramType4" value="array"/>
+        <property name="payload_arrayElementType4" value="record"/>
+        <property name="payload_arrayRecordFields4" value="alias,email,objectId"/>
+        <property name="payload_param4_dualMode" value="true"/>
+        <property name="payload_param4_inputModeField" value="recipientsInputMode"/>
+        <property name="payload_param4_jsonField" value="recipientsJson"/>
+        <property name="payload_param5" value="retainInheritedPermissions"/>
+        <property name="payload_paramType5" value="boolean"/>
+        <property name="payload_param6" value="expirationDateTime"/>
+        <property name="payload_paramType6" value="string"/>
+        <property name="payload_param7" value="password"/>
+        <property name="payload_paramType7" value="string"/>
+        <property name="param2" value="headers"/>
+        <property name="paramType2" value="map"/>
+        <property name="mapValueType2" value="union"/>
+        <property name="paramSize" value="3"/>
+        <property name="paramFunctionName" value="inviteInRoot"/>
+        <property name="returnType" value="union"/>
+        <property name="functionType" value="REMOTE"/>
+        <class name="io.ballerina.stdlib.mi.BalConnectorFunction">
+            <property name="orgName" value="ballerinax"/>
+            <property name="moduleName" value="microsoft.onedrive"/>
+            <property name="version" value="3"/>
+        </class>
+    </sequence>
+</template>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<component name="functions" type="synapse/template">
+    <subComponents>
+        <component name="listDrive">
+            <displayName>list drive</displayName>
+            <file>listDrive.xml</file>
+            <description>Get entities from drives</description>
+        </component>
+        <component name="getDrive">
+            <displayName>get drive</displayName>
+            <file>getDrive.xml</file>
+            <description>Get entity from drives by key</description>
+        </component>
+        <component name="getChildrenCountInRoot">
+            <displayName>get children count in root</displayName>
+            <file>getChildrenCountInRoot.xml</file>
+            <description>Get the number of the resource</description>
+        </component>
+        <component name="discardCheckoutInRoot">
+            <displayName>discard checkout in root</displayName>
+            <file>discardCheckoutInRoot.xml</file>
+            <description>Invoke action discardCheckout</description>
+        </component>
+        <component name="deleteRoot">
+            <displayName>delete root</displayName>
+            <file>deleteRoot.xml</file>
+            <description>Delete navigation property root for drives</description>
+        </component>
+        <component name="assignSentitivityLabelInRoot">
+            <displayName>assign sentitivity label in root</displayName>
+            <file>assignSentitivityLabelInRoot.xml</file>
+            <description>Invoke action assignSensitivityLabel</description>
+        </component>
+        <component name="followInRoot">
+            <displayName>follow in root</displayName>
+            <file>followInRoot.xml</file>
+            <description>Invoke action follow</description>
+        </component>
+        <component name="getChildrenContent">
+            <displayName>get children content</displayName>
+            <file>getChildrenContent.xml</file>
+            <description>Get content for the navigation property children from drives</description>
+        </component>
+        <component name="setChildrenContentInRoot">
+            <displayName>set children content in root</displayName>
+            <file>setChildrenContentInRoot.xml</file>
+            <description>Update content for the navigation property children in drives</description>
+        </component>
+        <component name="getItem">
+            <displayName>get item</displayName>
+            <file>getItem.xml</file>
+            <description>Get items from drives</description>
+        </component>
+        <component name="getChildrenContentByPath">
+            <displayName>get children content by path</displayName>
+            <file>getChildrenContentByPath.xml</file>
+            <description>Get content for the navigation property children from drives</description>
+        </component>
+        <component name="createLink">
+            <displayName>create link</displayName>
+            <file>createLink.xml</file>
+            <description>Invoke action createLink</description>
+        </component>
+        <component name="updateRoot">
+            <displayName>update root</displayName>
+            <file>updateRoot.xml</file>
+            <description>Update the navigation property root in drives</description>
+        </component>
+        <component name="checkin">
+            <displayName>checkin</displayName>
+            <file>checkin.xml</file>
+            <description>Invoke action checkin</description>
+        </component>
+        <component name="permanentDeleteInRoot">
+            <displayName>permanent delete in root</displayName>
+            <file>permanentDeleteInRoot.xml</file>
+            <description>Invoke action permanentDelete</description>
+        </component>
+        <component name="updateDrive">
+            <displayName>update drive</displayName>
+            <file>updateDrive.xml</file>
+            <description>Update entity in drives</description>
+        </component>
+        <component name="createItemByPath">
+            <displayName>create item by path</displayName>
+            <file>createItemByPath.xml</file>
+            <description>Create new navigation property to children for drives</description>
+        </component>
+        <component name="checkinInRoot">
+            <displayName>checkin in root</displayName>
+            <file>checkinInRoot.xml</file>
+            <description>Invoke action checkin</description>
+        </component>
+        <component name="validatePermission">
+            <displayName>validate permission</displayName>
+            <file>validatePermission.xml</file>
+            <description>Invoke action validatePermission</description>
+        </component>
+        <component name="recent">
+            <displayName>recent</displayName>
+            <file>recent.xml</file>
+            <description>Invoke function recent</description>
+        </component>
+        <component name="inviteInRoot">
+            <displayName>invite in root</displayName>
+            <file>inviteInRoot.xml</file>
+            <description>Invoke action invite</description>
+        </component>
+        <component name="copyByPath">
+            <displayName>copy by path</displayName>
+            <file>copyByPath.xml</file>
+            <description>Invoke action copy</description>
+        </component>
+        <component name="deleteRootContent">
+            <displayName>delete root content</displayName>
+            <file>deleteRootContent.xml</file>
+            <description>Delete content for the navigation property root in drives</description>
+        </component>
+        <component name="getItemByPath">
+            <displayName>get item by path</displayName>
+            <file>getItemByPath.xml</file>
+            <description>Get root from drives</description>
+        </component>
+        <component name="updateItem">
+            <displayName>update item</displayName>
+            <file>updateItem.xml</file>
+            <description>Update the navigation property items in drives</description>
+        </component>
+        <component name="getItemsContent">
+            <displayName>get items content</displayName>
+            <file>getItemsContent.xml</file>
+            <description>Get content for the navigation property items from drives</description>
+        </component>
+        <component name="getRootContent">
+            <displayName>get root content</displayName>
+            <file>getRootContent.xml</file>
+            <description>Get content for the navigation property root from drives</description>
+        </component>
+        <component name="deleteItemsContent">
+            <displayName>delete items content</displayName>
+            <file>deleteItemsContent.xml</file>
+            <description>Delete content for the navigation property items in drives</description>
+        </component>
+        <component name="searchWithinDriveItem">
+            <displayName>search within drive item</displayName>
+            <file>searchWithinDriveItem.xml</file>
+            <description>Invoke function search</description>
+        </component>
+        <component name="setChildrenContent">
+            <displayName>set children content</displayName>
+            <file>setChildrenContent.xml</file>
+            <description>Update content for the navigation property children in drives</description>
+        </component>
+        <component name="deleteChildrenContentByPath">
+            <displayName>delete children content by path</displayName>
+            <file>deleteChildrenContentByPath.xml</file>
+            <description>Delete content for the navigation property children in drives</description>
+        </component>
+        <component name="deleteChildrenContent">
+            <displayName>delete children content</displayName>
+            <file>deleteChildrenContent.xml</file>
+            <description>Delete content for the navigation property children in drives</description>
+        </component>
+        <component name="getChildren">
+            <displayName>get children</displayName>
+            <file>getChildren.xml</file>
+            <description>Get children from drives</description>
+        </component>
+        <component name="createUploadSession">
+            <displayName>create upload session</displayName>
+            <file>createUploadSession.xml</file>
+            <description>Invoke action createUploadSession</description>
+        </component>
+        <component name="unfollowInRoot">
+            <displayName>unfollow in root</displayName>
+            <file>unfollowInRoot.xml</file>
+            <description>Invoke action unfollow</description>
+        </component>
+        <component name="createItem">
+            <displayName>create item</displayName>
+            <file>createItem.xml</file>
+            <description>Create new navigation property to items for drives</description>
+        </component>
+        <component name="previewInRoot">
+            <displayName>preview in root</displayName>
+            <file>previewInRoot.xml</file>
+            <description>Invoke action preview</description>
+        </component>
+        <component name="listChildrenInRoot">
+            <displayName>list children in root</displayName>
+            <file>listChildrenInRoot.xml</file>
+            <description>Get children from drives</description>
+        </component>
+        <component name="deleteDrive">
+            <displayName>delete drive</displayName>
+            <file>deleteDrive.xml</file>
+            <description>Delete entity from drives</description>
+        </component>
+        <component name="listChildren">
+            <displayName>list children</displayName>
+            <file>listChildren.xml</file>
+            <description>List children of a driveItem</description>
+        </component>
+        <component name="unfollow">
+            <displayName>unfollow</displayName>
+            <file>unfollow.xml</file>
+            <description>Invoke action unfollow</description>
+        </component>
+        <component name="preview">
+            <displayName>preview</displayName>
+            <file>preview.xml</file>
+            <description>Invoke action preview</description>
+        </component>
+        <component name="createLinkInRoot">
+            <displayName>create link in root</displayName>
+            <file>createLinkInRoot.xml</file>
+            <description>Invoke action createLink</description>
+        </component>
+        <component name="getItemCount">
+            <displayName>get item count</displayName>
+            <file>getItemCount.xml</file>
+            <description>Get the number of the resource</description>
+        </component>
+        <component name="discardCheckout">
+            <displayName>discard checkout</displayName>
+            <file>discardCheckout.xml</file>
+            <description>Invoke action discardCheckout</description>
+        </component>
+        <component name="createUploadSessionInRoot">
+            <displayName>create upload session in root</displayName>
+            <file>createUploadSessionInRoot.xml</file>
+            <description>Invoke action createUploadSession</description>
+        </component>
+        <component name="validatePermissionInRoot">
+            <displayName>validate permission in root</displayName>
+            <file>validatePermissionInRoot.xml</file>
+            <description>Invoke action validatePermission</description>
+        </component>
+        <component name="search">
+            <displayName>search</displayName>
+            <file>search.xml</file>
+            <description>Invoke function search</description>
+        </component>
+        <component name="updateItemByPath">
+            <displayName>update item by path</displayName>
+            <file>updateItemByPath.xml</file>
+            <description>Update the navigation property root in drives</description>
+        </component>
+        <component name="copyInRoot">
+            <displayName>copy in root</displayName>
+            <file>copyInRoot.xml</file>
+            <description>Invoke action copy</description>
+        </component>
+        <component name="restoreInRoot">
+            <displayName>restore in root</displayName>
+            <file>restoreInRoot.xml</file>
+            <description>Invoke action restore</description>
+        </component>
+        <component name="searchInRoot">
+            <displayName>search in root</displayName>
+            <file>searchInRoot.xml</file>
+            <description>Invoke function search</description>
+        </component>
+        <component name="getChildrenInRoot">
+            <displayName>get children in root</displayName>
+            <file>getChildrenInRoot.xml</file>
+            <description>Get children from drives</description>
+        </component>
+        <component name="copy">
+            <displayName>copy</displayName>
+            <file>copy.xml</file>
+            <description>Invoke action copy</description>
+        </component>
+        <component name="getRoot">
+            <displayName>get root</displayName>
+            <file>getRoot.xml</file>
+            <description>Get root from drives</description>
+        </component>
+        <component name="checkout">
+            <displayName>checkout</displayName>
+            <file>checkout.xml</file>
+            <description>Invoke action checkout</description>
+        </component>
+        <component name="deleteItemByPath">
+            <displayName>delete item by path</displayName>
+            <file>deleteItemByPath.xml</file>
+            <description>Delete navigation property root for drives</description>
+        </component>
+        <component name="listItem">
+            <displayName>list item</displayName>
+            <file>listItem.xml</file>
+            <description>drive: sharedWithMe</description>
+        </component>
+        <component name="listItemsByPath">
+            <displayName>list items by path</displayName>
+            <file>listItemsByPath.xml</file>
+            <description>Get children from drives</description>
+        </component>
+        <component name="extractSensitivityLabelsInRoot">
+            <displayName>extract sensitivity labels in root</displayName>
+            <file>extractSensitivityLabelsInRoot.xml</file>
+            <description>Invoke action extractSensitivityLabels</description>
+        </component>
+        <component name="restore">
+            <displayName>restore</displayName>
+            <file>restore.xml</file>
+            <description>Invoke action restore</description>
+        </component>
+        <component name="checkoutInRoot">
+            <displayName>checkout in root</displayName>
+            <file>checkoutInRoot.xml</file>
+            <description>Invoke action checkout</description>
+        </component>
+        <component name="permanentDelete">
+            <displayName>permanent delete</displayName>
+            <file>permanentDelete.xml</file>
+            <description>Invoke action permanentDelete</description>
+        </component>
+        <component name="deleteChildrenContentInRoot">
+            <displayName>delete children content in root</displayName>
+            <file>deleteChildrenContentInRoot.xml</file>
+            <description>Delete content for the navigation property children in drives</description>
+        </component>
+        <component name="setChildrenContentByPath">
+            <displayName>set children content by path</displayName>
+            <file>setChildrenContentByPath.xml</file>
+            <description>Update content for the navigation property children in drives</description>
+        </component>
+        <component name="follow">
+            <displayName>follow</displayName>
+            <file>follow.xml</file>
+            <description>Invoke action follow</description>
+        </component>
+        <component name="getChildrenContentInRoot">
+            <displayName>get children content in root</displayName>
+            <file>getChildrenContentInRoot.xml</file>
+            <description>Get content for the navigation property children from drives</description>
+        </component>
+        <component name="extractSensitivityLabel">
+            <displayName>extract sensitivity label</displayName>
+            <file>extractSensitivityLabel.xml</file>
+            <description>Invoke action extractSensitivityLabels</description>
+        </component>
+        <component name="getChildrenCount">
+            <displayName>get children count</displayName>
+            <file>getChildrenCount.xml</file>
+            <description>Get the number of the resource</description>
+        </component>
+        <component name="deleteItem">
+            <displayName>delete item</displayName>
+            <file>deleteItem.xml</file>
+            <description>Delete navigation property items for drives</description>
+        </component>
+        <component name="setItemsContent">
+            <displayName>set items content</displayName>
+            <file>setItemsContent.xml</file>
+            <description>Update content for the navigation property items in drives</description>
+        </component>
+        <component name="createDrive">
+            <displayName>create drive</displayName>
+            <file>createDrive.xml</file>
+            <description>Add new entity to drives</description>
+        </component>
+        <component name="setRootContent">
+            <displayName>set root content</displayName>
+            <file>setRootContent.xml</file>
+            <description>Update content for the navigation property root in drives</description>
+        </component>
+        <component name="invite">
+            <displayName>invite</displayName>
+            <file>invite.xml</file>
+            <description>Invoke action invite</description>
+        </component>
+        <component name="createChildren">
+            <displayName>create children</displayName>
+            <file>createChildren.xml</file>
+            <description>Create new navigation property to children for drives</description>
+        </component>
+        <component name="assignSentitivityLabel">
+            <displayName>assign sentitivity label</displayName>
+            <file>assignSentitivityLabel.xml</file>
+            <description>Invoke action assignSensitivityLabel</description>
+        </component>
+        <component name="sharedWithMe">
+            <displayName>shared with me</displayName>
+            <file>sharedWithMe.xml</file>
+            <description>Invoke function sharedWithMe</description>
+        </component>
+        <component name="createChildrenInRoot">
+            <displayName>create children in root</displayName>
+            <file>createChildrenInRoot.xml</file>
+            <description>Create new navigation property to children for drives</description>
+        </component>
+        </subComponents>
+</component>

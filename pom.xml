@@ -21,7 +21,7 @@
 
   <groupId>org.wso2.integration.connector</groupId>
   <artifactId>mi-connector-microsoft.onedrive</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <name>WSO2 Carbon - microsoft.onedrive Connector</name>
   <url>http://wso2.org</url>

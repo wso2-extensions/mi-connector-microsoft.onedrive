@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2025, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+<template xmlns="http://ws.apache.org/ns/synapse" name="copyInRoot">
+    <parameter name="responseVariable" description="The target variable in which the output of the operation will be stored"/>
+    <parameter name="overwriteBody" description="Replace the Message Body in Message Context with the output payload of the operation"/>
+    <parameter name="driveId" description=""/>
+    <parameter name="name" description=""/>
+    <parameter name="parentReference_driveId" description="Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a drive. Read-only."/>
+    <parameter name="parentReference_driveType" description="Identifies the type of drive. Only returned if the item is located in a drive. See drive resource for values."/>
+    <parameter name="parentReference_id" description="Unique identifier of the driveItem in the drive or a listItem in a list. Read-only."/>
+    <parameter name="parentReference_name" description="The name of the item being referenced. Read-only."/>
+    <parameter name="parentReference_path" description="Percent-encoded path that can be used to navigate to the item. Read-only."/>
+    <parameter name="parentReference_shareId" description="A unique identifier for a shared resource that can be accessed via the Shares API."/>
+    <parameter name="parentReference_sharepointIds_listId" description="The unique identifier (guid) for the item's list in SharePoint."/>
+    <parameter name="parentReference_sharepointIds_listItemId" description="An integer identifier for the item within the containing list."/>
+    <parameter name="parentReference_sharepointIds_listItemUniqueId" description="The unique identifier (guid) for the item within OneDrive for Business or a SharePoint site."/>
+    <parameter name="parentReference_sharepointIds_siteId" description="The unique identifier (guid) for the item's site collection (SPSite)."/>
+    <parameter name="parentReference_sharepointIds_siteUrl" description="The SharePoint URL for the site that contains the item."/>
+    <parameter name="parentReference_sharepointIds_tenantId" description="The unique identifier (guid) for the tenancy."/>
+    <parameter name="parentReference_sharepointIds_webId" description="The unique identifier (guid) for the item's site (SPWeb)."/>
+    <parameter name="parentReference_siteId" description="For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that site resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated."/>
+    <parameter name="childrenOnly" description=""/>
+    <parameter name="includeAllVersionHistory" description=""/>
+    <parameter name="headers" description=""/>
+    <sequence>
+        <property name="param0" value="driveId"/>
+        <property name="paramType0" value="string"/>
+        <property name="param1" value="payload"/>
+        <property name="paramType1" value="record"/>
+        <property name="param1_recordName" value="DriveItemIdMicrosoftGraphCopyBody" />
+        <property name="param1_recordOrg" value="ballerinax" />
+        <property name="param1_recordModule" value="microsoft.onedrive" />
+        <property name="payload_param0" value="name"/>
+        <property name="payload_paramType0" value="string"/>
+        <property name="payload_param1" value="parentReference.driveId"/>
+        <property name="payload_paramType1" value="string"/>
+        <property name="payload_param2" value="parentReference.driveType"/>
+        <property name="payload_paramType2" value="string"/>
+        <property name="payload_param3" value="parentReference.id"/>
+        <property name="payload_paramType3" value="string"/>
+        <property name="payload_param4" value="parentReference.name"/>
+        <property name="payload_paramType4" value="string"/>
+        <property name="payload_param5" value="parentReference.path"/>
+        <property name="payload_paramType5" value="string"/>
+        <property name="payload_param6" value="parentReference.shareId"/>
+        <property name="payload_paramType6" value="string"/>
+        <property name="payload_param7" value="parentReference.sharepointIds.listId"/>
+        <property name="payload_paramType7" value="string"/>
+        <property name="payload_param8" value="parentReference.sharepointIds.listItemId"/>
+        <property name="payload_paramType8" value="string"/>
+        <property name="payload_param9" value="parentReference.sharepointIds.listItemUniqueId"/>
+        <property name="payload_paramType9" value="string"/>
+        <property name="payload_param10" value="parentReference.sharepointIds.siteId"/>
+        <property name="payload_paramType10" value="string"/>
+        <property name="payload_param11" value="parentReference.sharepointIds.siteUrl"/>
+        <property name="payload_paramType11" value="string"/>
+        <property name="payload_param12" value="parentReference.sharepointIds.tenantId"/>
+        <property name="payload_paramType12" value="string"/>
+        <property name="payload_param13" value="parentReference.sharepointIds.webId"/>
+        <property name="payload_paramType13" value="string"/>
+        <property name="payload_param14" value="parentReference.siteId"/>
+        <property name="payload_paramType14" value="string"/>
+        <property name="payload_param15" value="childrenOnly"/>
+        <property name="payload_paramType15" value="boolean"/>
+        <property name="payload_param16" value="includeAllVersionHistory"/>
+        <property name="payload_paramType16" value="boolean"/>
+        <property name="param2" value="headers"/>
+        <property name="paramType2" value="map"/>
+        <property name="mapValueType2" value="union"/>
+        <property name="paramSize" value="3"/>
+        <property name="paramFunctionName" value="copyInRoot"/>
+        <property name="returnType" value="union"/>
+        <property name="functionType" value="REMOTE"/>
+        <class name="io.ballerina.stdlib.mi.BalConnectorFunction">
+            <property name="orgName" value="ballerinax"/>
+            <property name="moduleName" value="microsoft.onedrive"/>
+            <property name="version" value="3"/>
+        </class>
+    </sequence>
+</template>

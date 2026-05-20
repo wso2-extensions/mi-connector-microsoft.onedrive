@@ -1,0 +1,278 @@
+{
+  "connectorName": "microsoft_onedrive",
+  "operationName": "createUploadSessionInRoot",
+  "title": "create upload session in root",
+  "help": "Invoke action createUploadSession\n",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "General",
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "configRef",
+              "displayName": "Connection",
+              "inputType": "connection",
+              "allowedConnectionTypes": [
+                "microsoft_onedrive_Client"
+              ],
+              "defaultType": "connection.microsoft_onedrive_Client",
+              "defaultValue": "",
+              "required": "true",
+              "helpTip": "Connection to be used"
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Input Variables",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "driveId",
+                    "displayName": "driveId",
+                    "inputType": "stringOrExpression",
+                    "defaultValue": "",
+                    "required": true,
+                    "helpTip": "",
+                    "validateType": "",
+                    "matchPattern": ""
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Item",
+                    "collapsed": false,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "item_description",
+                          "displayName": "description",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Provides a user-visible description of the item. Read-write. Only on OneDrive Personal.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Drive Item Source",
+                          "collapsed": false,
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "item_driveItemSource_application",
+                                "displayName": "application",
+                                "inputType": "combo",
+                                "comboValues": [
+                                  "teams",
+                                  "yammer",
+                                  "sharePoint",
+                                  "oneDrive",
+                                  "stream",
+                                  "powerPoint",
+                                  "office",
+                                  "loki",
+                                  "loop",
+                                  "other",
+                                  "unknownFutureValue"
+                                ],
+                                "defaultValue": "teams",
+                                "required": "false",
+                                "helpTip": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "item_driveItemSource_externalId",
+                                "displayName": "externalId",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The external identifier for the drive item from the source.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "item_fileSize",
+                          "displayName": "fileSize",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "Provides an expected file size to perform a quota check before uploading. Only on OneDrive Personal.",
+                          "validateType": "regex",
+                          "matchPattern": "^$|^(-?\\d+(\\.\\d+)?|\\$\\{.+\\})$"
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "File System Info",
+                          "collapsed": false,
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "item_fileSystemInfo_createdDateTime",
+                                "displayName": "createdDateTime",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The UTC date and time the file was created on a client.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "item_fileSystemInfo_lastAccessedDateTime",
+                                "displayName": "lastAccessedDateTime",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The UTC date and time the file was last accessed. Available for the recent file list only.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            },
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "item_fileSystemInfo_lastModifiedDateTime",
+                                "displayName": "lastModifiedDateTime",
+                                "inputType": "stringOrExpression",
+                                "defaultValue": "",
+                                "required": false,
+                                "helpTip": "The UTC date and time the file was last modified on a client.",
+                                "validateType": "",
+                                "matchPattern": ""
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attributeGroup",
+                        "value": {
+                          "groupName": "Media Source",
+                          "collapsed": false,
+                          "elements": [
+                            {
+                              "type": "attribute",
+                              "value": {
+                                "name": "item_mediaSource_contentCategory",
+                                "displayName": "contentCategory",
+                                "inputType": "combo",
+                                "comboValues": [
+                                  "meeting",
+                                  "liveStream",
+                                  "presentation",
+                                  "screenRecording",
+                                  "story",
+                                  "profile",
+                                  "chat",
+                                  "note",
+                                  "comment",
+                                  "unknownFutureValue"
+                                ],
+                                "defaultValue": "meeting",
+                                "required": "false",
+                                "helpTip": ""
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "item_name",
+                          "displayName": "name",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "",
+                          "required": false,
+                          "helpTip": "The name of the item (filename and extension). Read-write.",
+                          "validateType": "",
+                          "matchPattern": ""
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "attributeGroup",
+                  "value": {
+                    "groupName": "Advanced",
+                    "collapsed": true,
+                    "elements": [
+                      {
+                        "type": "attribute",
+                        "value": {
+                          "name": "headers",
+                          "displayName": "headers",
+                          "inputType": "stringOrExpression",
+                          "defaultValue": "{}",
+                          "required": false,
+                          "helpTip": "Expecting JSON object with key-value pairs",
+                          "validateType": "json",
+                          "matchPattern": ""
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "attributeGroup",
+            "value": {
+              "groupName": "Output",
+              "elements": [
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "responseVariable",
+                    "displayName": "Output Variable Name",
+                    "inputType": "string",
+                    "defaultValue": "",
+                    "required": "false",
+                    "helpTip": "The target variable in which the output of the operation will be stored"
+                  }
+                },
+                {
+                  "type": "attribute",
+                  "value": {
+                    "name": "overwriteBody",
+                    "displayName": "Overwrite Message Body",
+                    "inputType": "checkbox",
+                    "defaultValue": "false",
+                    "helpTip": "Replace the Message Body in Message Context with the output payload of the operation (This will remove the payload from the above variable. But other elements such as headers and attributes will remain).",
+                    "required": "false"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
